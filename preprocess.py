@@ -1,11 +1,13 @@
 import matplotlib.pyplot as plt
 import fileinput
+import matplotlib.animation as animation
 
 To_be_replaced = ["playerTransformPositions: x = ", " z = "]
 
 filename = input("Type the file name also file format if anyother file format except .txt")
 X_buf = []
 Y_buf = []
+
 
 
 #Formating file name
@@ -32,8 +34,10 @@ with open(fullfilename, 'r') as openfile:
 openfile.close()
 print("File closed")
 
+
 #print(Y_buf,X_buf)
-plt.plot(Y_buf,X_buf)
+plt.plot(Y_buf,X_buf,'r-')
+plt.title('test')
 plt.show()
 
 

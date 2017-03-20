@@ -2,12 +2,12 @@ import matplotlib.pyplot as plt
 import fileinput
 import matplotlib.animation as animation
 
+
 To_be_replaced = ["playerTransformPositions: x = ", " z = "]
 
 filename = input("Type the file name also file format if anyother file format except .txt")
 X_buf = []
 Y_buf = []
-
 
 
 #Formating file name
@@ -47,7 +47,7 @@ line, = ax.plot(Y_buf,X_buf)
 
 def update(num, X_buf, Y_buf, line):
 	line.set_data(X_buf[:num], Y_buf[:num])
-	line.axes.axis([0, 250, 0, 250])
+	line.axes.axis([140, 260, 60, 160])
 	return line,
 
 ani = animation.FuncAnimation(fig, update, len(X_buf), fargs=[X_buf, Y_buf, line], interval = 25, blit=True)

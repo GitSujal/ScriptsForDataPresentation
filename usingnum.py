@@ -1,11 +1,10 @@
 #extract data
 
 import matplotlib.pyplot as plt
-import numpy as np
 import fileinput
-import matplotlib.animation as animation
+import numpy as np
 # Initialize buffers
-X_buf = []
+'''X_buf = []
 Y_buf = []
 xa =[]
 # Input file name with data being stored
@@ -30,16 +29,8 @@ with open (filename,'r') as jaf:
 # print("\n","Y_buf", Y_buf)
 
 #ploting X and Y
-
-
-#animation
-fig, ax = plt.subplots()
-line, = ax.plot(Y_buf,X_buf)
-
-def update(num, X_buf, Y_buf, line):
-	line.set_data(X_buf[:num], Y_buf[:num])
-	line.axes.axis([0, 250, 0, 250])
-	return line,
-
-ani = animation.FuncAnimation(fig, update, len(X_buf), fargs=[X_buf, Y_buf, line], interval = 25, blit=True)
+plt.plot(Y_buf,X_buf)
 plt.show()
+'''
+x, y = np.loadtxt('myfile.txt', delimiter=',', unpack = True)
+plt.plot(x,y)

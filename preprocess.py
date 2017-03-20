@@ -35,9 +35,23 @@ openfile.close()
 print("File closed")
 
 
-#print(Y_buf,X_buf)
-plt.plot(Y_buf,X_buf,'r-')
-plt.title('test')
+# #print(Y_buf,X_buf)
+# plt.plot(Y_buf,X_buf,'r-')
+# plt.title('test')
+# plt.show()
+
+
+#animation
+fig, ax = plt.subplots()
+line, = ax.plot(Y_buf,X_buf)
+
+def update(num, X_buf, Y_buf, line):
+	line.set_data(X_buf[:num], Y_buf[:num])
+	line.axes.axis([0, 250, 0, 250])
+	return line,
+
+ani = animation.FuncAnimation(fig, update, len(X_buf), fargs=[X_buf, Y_buf, line], interval = 25, blit=True)
 plt.show()
+
 
 

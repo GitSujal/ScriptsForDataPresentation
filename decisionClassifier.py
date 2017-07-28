@@ -6,7 +6,7 @@ from sklearn import tree
 import pydotplus 
 
 #For reading the data in CSV format
-filename = "Classifier_Data.csv"
+filename = "final_data.csv"
 csv = np.genfromtxt (filename, delimiter=",")
 
 # Name = csv[:,0]
@@ -14,11 +14,16 @@ csv = np.genfromtxt (filename, delimiter=",")
 # ActualGain = csv[:,2]
 #Extracting Training Data and Target Variable From the data
 training_data = csv[:,1:3] #Taking only experience and Actual Gain under consideration
+#print(training_data)
 target_Felt = csv[:,3] #Extracting target classes
+
+
 features = ["Experience","Actual Gain"] #Names of features
 classes = ["Less","More"] # Names of Target classes
+
 clf = tree.DecisionTreeClassifier()	 # Initiating Decision Tree classifier
 clf = clf.fit(training_data,target_Felt) #Training the Decision Tree
+
 test_data_exp = []
 test_data_actual_gain = []
 while ((test_data_exp!= 'q') | (test_data_actual_gain!= 'q')):
@@ -30,13 +35,13 @@ while ((test_data_exp!= 'q') | (test_data_actual_gain!= 'q')):
 	result = clf.predict(test_data)
 	probability = clf.predict_proba(test_data)
 	if result ==1:
-		print("More with probability ",probability[0][1])
+		print("Less with probability ",probability[0][1])
 	else:
-		print("Less with Probability ",probability[0][0])
+		print("More with Probability ",probability[0][0])
 
 
 #For creating the output pdf from the classifier.
 # dot_data = tree.export_graphviz(clf, out_file=None,feature_names=features,class_names=classes,filled= True,rounded= True,special_characters= True) 
 # graph = pydotplus.graph_from_dot_data(dot_data) 
-# graph.write_pdf("Classifier.pdf") 
+# graph.write_pdf("DecisionTreeClassifier.pdf") 
 
